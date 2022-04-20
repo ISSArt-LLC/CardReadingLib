@@ -3,7 +3,7 @@ import Foundation
 import SwiftUI
 
 
-struct UserData {
+public struct UserData {
     
     var email = [""]
     var website = [""]

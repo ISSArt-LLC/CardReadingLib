@@ -1,7 +1,7 @@
 import Foundation
 
-class TextItem: Identifiable {
-    var id: String
+public class TextItem: Identifiable {
+    public  var id: String
     var text: String = ""
     
     init() {

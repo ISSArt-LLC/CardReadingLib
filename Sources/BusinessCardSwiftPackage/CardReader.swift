@@ -6,7 +6,7 @@ import UIKit
 
 
 @available(macOS 10.15, *)
-class CardReader  {
+public class CardReader  {
     
     
     @ObservedObject var recognizedContent = RecognizedContent()
