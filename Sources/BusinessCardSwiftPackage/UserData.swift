@@ -5,20 +5,20 @@ import SwiftUI
 
 public struct UserData {
     
-    var email = [""]
-    var website = [""]
-    var zipCode = [""]
-    var areaCode = [""]
-    var phone = [""]
-    var expectedName = [""]
-    var adress = [""]
-    var expectedCompanyName = [""]
-    var companyName = [""]
-    var findCompanyName = [""]
-    var emailSubstring = ""
-    var websiteSubstring = ""
+    public var email = [""]
+    public var website = [""]
+    public var zipCode = [""]
+    public var areaCode = [""]
+    public var phone = [""]
+    public var expectedName = [""]
+    public var adress = [""]
+    public var expectedCompanyName = [""]
+    public var companyName = [""]
+    public var findCompanyName = [""]
+    public var emailSubstring = ""
+    public var websiteSubstring = ""
     
-    var tempArr = [String]()
+    public var tempArr = [String]()
     
     public init (email: [String] = [""], website: [String] = [""], zipCode: [String] = [""] ) {
         self.email = email
