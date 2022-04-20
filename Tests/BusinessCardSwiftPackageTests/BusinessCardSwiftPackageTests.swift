@@ -6,6 +6,6 @@ final class BusinessCardSwiftPackageTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
-        XCTAssertEqual(BusinessCardSwiftPackage().text, "Hello, World!")
+       // XCTAssertEqual(BusinessCardSwiftPackage.text, "Hello, World!")
     }
 }
