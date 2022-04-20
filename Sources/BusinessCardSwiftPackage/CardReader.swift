@@ -18,7 +18,6 @@ public class CardReader  {
     
     public init() {
         
-        
     }
     public func recognizeText(scannedImages: UIImage) {
         let queue = DispatchQueue(label: "textRecognitionQueue", qos: .userInitiated)
@@ -89,24 +88,18 @@ public class CardReader  {
             {
                 expCompanies.append((string))
                 expCompanies = Array(Set(expCompanies.filter{$0 != ""}))
-                print("expCompanies.count")
-                print(expCompanies.count)
-                print("HERE1")
                 
             }
             
             if expCompanies.count == 0 && string.lowercased().contains(companyNameMail) && !string.contains("@") && !string.contains("www.") && !string.contains(".com"){
                 expCompanies.append((string))
                 expCompanies = Array(Set(expCompanies.filter{$0 != ""}))
-                print("HERE2")
             }
             
             
             if  expCompanies.count == 0 && string.lowercased().contains(companyNameWeb)    {
-                print("HERE3")
                 expCompanies.append((companyNameWeb))
                 expCompanies = Array(Set(expCompanies.filter{$0 != ""}))
-                print(expCompanies.count)
             }
         }
         return expCompanies.joined(separator: " ").capitalized

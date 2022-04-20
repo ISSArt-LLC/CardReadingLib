@@ -61,9 +61,6 @@ public struct TextRecognition {
                 
                 tempArrOfStrings.append(recognizedText.string)
             }
-            
-            print("tempArrOfStrings")
-            print(tempArrOfStrings)
         }
         
         request.recognitionLevel = .accurate
