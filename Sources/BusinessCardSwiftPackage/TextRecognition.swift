@@ -6,13 +6,13 @@ import UIKit
 @available(macOS 10.15, *)
 
 public struct TextRecognition {
-    var scannedImages: [UIImage]
+    public var scannedImages: [UIImage]
     @ObservedObject var recognizedContent: RecognizedContent
-    var didFinishRecognition: () -> Void
+    public var didFinishRecognition: () -> Void
    
     
     
-    func recognizeText() {
+   public func recognizeText() {
         let queue = DispatchQueue(label: "textRecognitionQueue", qos: .userInitiated)
         queue.async {
             for image in scannedImages {

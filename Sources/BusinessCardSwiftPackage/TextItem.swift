@@ -2,9 +2,9 @@ import Foundation
 
 public class TextItem: Identifiable {
     public  var id: String
-    var text: String = ""
+    public var text: String = ""
     
-    init() {
+    public init() {
         id = UUID().uuidString
     }
 }

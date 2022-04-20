@@ -11,11 +11,11 @@ public class CardReader  {
     
     @ObservedObject var recognizedContent = RecognizedContent()
     
-    var isSuccess: ((_ text : String) -> ())?
-    var userDataCompletion: ((_ email: [String], _ website: [String], _ areaCode: [String], _ phone: [String], _ expName: [String], _ zipCode: [String], _ adress: [String], _ companyName: String ) -> ())?
+    public var isSuccess: ((_ text : String) -> ())?
+    public var userDataCompletion: ((_ email: [String], _ website: [String], _ areaCode: [String], _ phone: [String], _ expName: [String], _ zipCode: [String], _ adress: [String], _ companyName: String ) -> ())?
     
     
-    func recognizeText(scannedImages: UIImage) {
+    public func recognizeText(scannedImages: UIImage) {
         let queue = DispatchQueue(label: "textRecognitionQueue", qos: .userInitiated)
         queue.async {
             guard let cgImage = scannedImages.cgImage else { return }
@@ -70,7 +70,7 @@ public class CardReader  {
     }
     
     
-    func findCompanyName( array: [String] ) -> String {
+    public func findCompanyName( array: [String] ) -> String {
         let stringEmail = UserData.parseFromStrings(array: array).email.joined(separator: " ")
         let stringWebsite = UserData.parseFromStrings(array: array).website.joined(separator: " ")
         
