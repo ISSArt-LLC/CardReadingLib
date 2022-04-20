@@ -20,8 +20,10 @@ public struct UserData {
     
     var tempArr = [String]()
     
-    public init () {
-        
+    public init (email: [String] = [""], website: [String] = [""], zipCode: [String] = [""] ) {
+        self.email = email
+        self.website = website
+        self.zipCode = zipCode
     }
    public static func parseFromStrings(array: [String]) -> UserData {
         
