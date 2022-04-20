@@ -56,8 +56,7 @@ public extension String {
             userD.expectedCompanyName.append(string)
             
             userD.websiteSubstring = string.between(".", ".") ?? ""
-            print("userD.websiteSubstring")
-            print(userD.websiteSubstring)
+           
         }
         
     }
@@ -66,8 +65,7 @@ public extension String {
             userD.email.append(string)
             userD.expectedCompanyName.append(string)
             userD.emailSubstring = string.between("@", ".") ?? ""
-            print("userD.emailSubstring")
-            print(userD.emailSubstring)
+           
             
         }
         

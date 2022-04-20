@@ -57,10 +57,7 @@ public struct UserData {
         }
         
         userD.companyName = array.difference(from: userD.expectedCompanyName)
-        print(" userD.companyName")
-        
-        print(userD.companyName)
-        
+       
         if userD.emailSubstring == userD.websiteSubstring
         {
             userD.findCompanyName.append(userD.websiteSubstring)
