@@ -10,7 +10,11 @@ public struct TextRecognition {
     @ObservedObject var recognizedContent: RecognizedContent
     public var didFinishRecognition: () -> Void
    
-    
+    public init(scannedImages: [UIImage], recognizedContent: RecognizedContent, didFinishRecognition: @escaping ()-> Void ){
+        self.scannedImages = scannedImages
+        self.recognizedContent = recognizedContent
+        self.didFinishRecognition = didFinishRecognition
+    }
     
    public func recognizeText() {
         let queue = DispatchQueue(label: "textRecognitionQueue", qos: .userInitiated)
