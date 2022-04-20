@@ -20,8 +20,10 @@ public struct UserData {
     
     var tempArr = [String]()
     
-    
-    static func parseFromStrings(array: [String]) -> UserData {
+    public init () {
+        
+    }
+   public static func parseFromStrings(array: [String]) -> UserData {
         
         var tempArea = ""
         
@@ -79,7 +81,7 @@ public struct UserData {
     }
 }
 
-var userD = UserData()
+public var userD = UserData()
 
 
 
