@@ -15,6 +15,11 @@ public class CardReader  {
     public var userDataCompletion: ((_ email: [String], _ website: [String], _ areaCode: [String], _ phone: [String], _ expName: [String], _ zipCode: [String], _ adress: [String], _ companyName: String ) -> ())?
     
     
+    
+    public init() {
+        
+        
+    }
     public func recognizeText(scannedImages: UIImage) {
         let queue = DispatchQueue(label: "textRecognitionQueue", qos: .userInitiated)
         queue.async {
