@@ -9,6 +9,7 @@ import UIKit
 public class CardReader  {
     
     
+    
     @ObservedObject var recognizedContent = RecognizedContent()
     
     public var isSuccess: ((_ text : String) -> ())?
@@ -19,6 +20,9 @@ public class CardReader  {
     public init() {
         
     }
+    
+    
+    
     public func recognizeText(scannedImages: UIImage) {
         let queue = DispatchQueue(label: "textRecognitionQueue", qos: .userInitiated)
         queue.async {

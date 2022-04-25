@@ -63,6 +63,7 @@ public struct TextRecognition {
             }
         }
         
+        
         request.recognitionLevel = .accurate
         request.usesLanguageCorrection = true
         
