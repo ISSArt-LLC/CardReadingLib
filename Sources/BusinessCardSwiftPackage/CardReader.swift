@@ -12,7 +12,7 @@ public class CardReader  {
     @ObservedObject var recognizedContent = RecognizedContent()
     
     public var isSuccess: ((_ text : String) -> ())?
-    public var userDataCompletion: ((_ email: [String], _ website: [String], _ areaCode: [String], _ phone: [String], _ expName: [String], _ zipCode: [String], _ adress: [String], _ companyName: String ) -> ())?
+    public var userDataCompletion: ((_ email: [String], _ website: [String], _ areaCode: [String], _ phone: [String], _ expName: [String], _ zipCode: [String], _ adress: [String], _ companyName: String, _ isSuccess: Bool ) -> ())?
     
     
     
@@ -64,7 +64,7 @@ public class CardReader  {
             }
             self.userDataCompletion?(UserData.parseFromStrings(array: tempArrOfStrings).email, UserData.parseFromStrings(array: tempArrOfStrings).website,
                                      UserData.parseFromStrings(array: tempArrOfStrings).areaCode, UserData.parseFromStrings(array: tempArrOfStrings).phone, UserData.parseFromStrings(array: tempArrOfStrings).expectedName, UserData.parseFromStrings(array: tempArrOfStrings).zipCode, UserData.parseFromStrings(array: tempArrOfStrings).adress,
-                                     self.findCompanyName(array: tempArrOfStrings))
+                                     self.findCompanyName(array: tempArrOfStrings), true)
         }
         
         request.recognitionLevel = .accurate
