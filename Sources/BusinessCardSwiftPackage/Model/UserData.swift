@@ -17,6 +17,7 @@ public struct UserData {
     public var findCompanyName = [""]
     public var emailSubstring = ""
     public var websiteSubstring = ""
+    public var image: UIImage = UIImage()
     
     public var tempArr = [String]()
     
@@ -25,7 +26,10 @@ public struct UserData {
         self.website = website
         self.zipCode = zipCode
     }
-   public static func parseFromStrings(array: [String]) -> UserData {
+    
+    public static func parseFromStrings(array: [String], scannedImage: UIImage) -> UserData {
+        
+        
         
         var tempArea = ""
         
@@ -37,10 +41,10 @@ public struct UserData {
         userD.phone.removeAll()
         userD.companyName.removeAll()
         userD.expectedName.removeAll()
-        userD.adress.removeAll()
-        
+        userD.adress.removeAll()        
         userD.expectedCompanyName =  [String]()
         
+        userD.image = scannedImage
         
         
         for string in array {
@@ -57,7 +61,7 @@ public struct UserData {
         }
         
         userD.companyName = array.difference(from: userD.expectedCompanyName)
-       
+        
         if userD.emailSubstring == userD.websiteSubstring
         {
             userD.findCompanyName.append(userD.websiteSubstring)
