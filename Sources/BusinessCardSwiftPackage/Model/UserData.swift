@@ -41,7 +41,8 @@ public struct UserData {
         userD.phone.removeAll()
         userD.companyName.removeAll()
         userD.expectedName.removeAll()
-        userD.adress.removeAll()        
+        userD.adress.removeAll()
+        userD.findCompanyName.removeAll()
         userD.expectedCompanyName =  [String]()
         
         userD.image = scannedImage
