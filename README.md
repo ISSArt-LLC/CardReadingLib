@@ -1,6 +1,6 @@
 # BusinessCardSwiftPackage
 
-CardReaderLib считывает данные с визитной карты и идентифицирует поля:
+CardReaderLib reads data from a business card and identifies fields:
 
 - name
 - email
@@ -11,3 +11,28 @@ CardReaderLib считывает данные с визитной карты и 
 - area code
 - address
 
+
+
+ #### Detect text on card ####
+    
+    import BusinessCardSwiftPackage
+
+    cardReader = CardRecognizer()
+    cardReader.recognizeTextOnCard(scannedImage: UIImage)
+
+    
+ #### Get detected fields ####
+
+     cardReader.userDataCompletion = {userData in
+               email = userData?.email
+               website = userData?.website
+               areaCode = userData?.areaCode
+               phone = userData?.phone
+               personName = userData?.expectedName
+               zipCode = userData?.zipCode
+               address = userData?.adress
+               companyName = userData?.findCompanyName
+        }
+    
+    
+    
