@@ -3,89 +3,100 @@ import Foundation
 import SwiftUI
 
 
-public struct UserData {
+public class UserData {
     
-    public var email = [""]
-    public var website = [""]
-    public var zipCode = [""]
-    public var areaCode = [""]
-    public var phone = [""]
-    public var expectedName = [""]
-    public var adress = [""]
-    public var expectedCompanyName = [""]
-    public var companyName = [""]
-    public var findCompanyName = [""]
+    private var email: [String] = []
+    private var website: [String] = []
+    private var zipCode: [String] = []
+    private var areaCode: [String] = []
+    private var phone: [String] = []
+    private var expectedName: [String] = []
+    private var adress: [String] = []
+    private var expectedCompanyName: [String] = []
+    private var companyName: [String] = []
+    private var findCompanyName: [String] = []
     public var emailSubstring = ""
     public var websiteSubstring = ""
     public var image: UIImage = UIImage()
-    
-    public var tempArr = [String]()
-    
-    public init (email: [String] = [""], website: [String] = [""], zipCode: [String] = [""] ) {
-        self.email = email
-        self.website = website
-        self.zipCode = zipCode
+
+    public func addCompanyName(newName: String) {
+        if !companyName.contains(newName) && !newName.isEmpty {
+            companyName.append(newName)
+        }
     }
-    
-    public static func parseFromStrings(array: [String], scannedImage: UIImage) -> UserData {
-        
-        
-        
-        var tempArea = ""
-        
-        
-        userD.email.removeAll()
-        userD.website.removeAll()
-        userD.zipCode.removeAll()
-        userD.areaCode.removeAll()
-        userD.phone.removeAll()
-        userD.companyName.removeAll()
-        userD.expectedName.removeAll()
-        userD.adress.removeAll()
-        userD.findCompanyName.removeAll()
-        userD.expectedCompanyName =  [String]()
-        
-        userD.image = scannedImage
-        
-        
-        for string in array {
-            let zipTemp = string.findZip(string: string as NSString)
-            userD.zipCode.append(zipTemp)
-            
-            
-            string.isStringAddress(string, zipTemp: zipTemp)
-            string.findPhone(string: string, tempArea: tempArea)
-            string.isStringEmail(string: string)
-            string.isStringWebsite(string: string)
-            string.isStringName(string: string)
-            
+
+    public func addZipCode(newZip: String) {
+        if !zipCode.contains(newZip) && !newZip.isEmpty {
+            zipCode.append(newZip)
         }
-        
-        userD.companyName = array.difference(from: userD.expectedCompanyName)
-        
-        if userD.emailSubstring == userD.websiteSubstring
-        {
-            userD.findCompanyName.append(userD.websiteSubstring)
-            userD.findCompanyName = userD.findCompanyName.filter{$0 != ""}
-        } else {
-            
-            
-            for string in userD.companyName {
-                
-                if string.lowercased().contains(userD.emailSubstring.lowercased())
-                    || string.lowercased().contains(userD.websiteSubstring.lowercased())
-                {
-                    userD.findCompanyName.append(string)
-                    userD.findCompanyName = userD.findCompanyName.filter{$0 != ""}
-                }
-            }
-            
+    }
+
+    public func addAddress(newAddress: String) {
+        if !adress.contains(newAddress) && !newAddress.isEmpty {
+            adress.append(newAddress)
         }
-        return userD
+    }
+
+    public func addPhone(newPhone: String) {
+        if !phone.contains(newPhone) && !newPhone.isEmpty {
+            phone.append(newPhone)
+        }
+    }
+
+    public func addAreaCode(newAreaCode: String) {
+        if !areaCode.contains(newAreaCode) && !newAreaCode.isEmpty {
+            areaCode.append(newAreaCode)
+        }
+    }
+
+    public func addEmail(newEmail: String) {
+        if !email.contains(newEmail) && !newEmail.isEmpty {
+            email.append(newEmail)
+        }
+    }
+
+    public func addWebSite(newWebSite: String) {
+        if !website.contains(newWebSite) && !newWebSite.isEmpty {
+            website.append(newWebSite)
+        }
+    }
+
+    public func addName(newName: String) {
+        if !expectedName.contains(newName) && !newName.isEmpty {
+            expectedName.append(newName)
+        }
+    }
+
+    public func addAdditionalCompanyNameVariants(newVariant: String) {
+        if !findCompanyName.contains(newVariant) && !newVariant.isEmpty {
+            findCompanyName.append(newVariant)
+        }
+    }
+
+    public func getCompanyName() -> String? {
+        email.first
+    }
+
+    public func getName() -> String? {
+        expectedName.first
+    }
+
+    public func getWebsite() -> String? {
+        website.first
+    }
+
+    public func getAddress() -> String? {
+        adress.first
+    }
+
+    public func getPhone() -> String? {
+        phone.first
+    }
+
+    public func getEmail() -> String? {
+        email.first
     }
 }
-
-public var userD = UserData()
 
 
 

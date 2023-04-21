@@ -8,6 +8,7 @@ public class CardRecognizer {
     public var userDataCompletion: DataRecognitionCallback?
     
     private let cardDetector = CardDetector()
+    private let stringsParser = RecognizedStringsParser()
     private var sourceImage: UIImage? = nil
     
     public init() {
@@ -33,22 +34,25 @@ public class CardRecognizer {
     
     private func recognizeText() {
         let queue = DispatchQueue(label: "textRecognitionQueue", qos: .userInitiated)
-        queue.async {
-            guard let cgImage = self.sourceImage?.cgImage else { return }
+        queue.async { [weak self] in
+            guard let cgImage = self?.sourceImage?.cgImage else { return }
             
             let requestHandler = VNImageRequestHandler(cgImage: cgImage, options: [:])
-            
+            guard let recognitionRequest = self?.getTextRecognitionRequest() else {
+                self?.userDataCompletion?(nil)
+                return
+            }
+
             do {
-                let textItem = TextItem()
-                try requestHandler.perform([self.getTextRecognitionRequest(with: textItem)])
-                
+                try requestHandler.perform([recognitionRequest])
             } catch {
                 print(error.localizedDescription)
+                self?.userDataCompletion?(nil)
             }
         }
     }
     
-    private func getTextRecognitionRequest(with textItem: TextItem) -> VNRecognizeTextRequest {
+    private func getTextRecognitionRequest() -> VNRecognizeTextRequest {
         var tempArrOfStrings = [String]()
         
         let request = VNRecognizeTextRequest { request, error in
@@ -56,19 +60,17 @@ public class CardRecognizer {
                 print(error.localizedDescription)
                 return
             }
-            
-            
+
             guard let observations = request.results as? [VNRecognizedTextObservation] else { return }
             
             observations.forEach { observation in
                 guard let recognizedText = observation.topCandidates(1).first else { return }
-                textItem.text += recognizedText.string
-                textItem.text += "\n"
-                                                
                 tempArrOfStrings.append(recognizedText.string)
             }
-            
-            var dataResult = UserData.parseFromStrings(array: tempArrOfStrings, scannedImage: self.sourceImage!)
+            print(tempArrOfStrings)
+            //var dataResult = UserData.parseFromStrings(array: tempArrOfStrings, scannedImage: self.sourceImage!)
+            let dataResult = self.stringsParser.parseStrings(strings: tempArrOfStrings)
+            dataResult.image = self.sourceImage!
             self.userDataCompletion?(dataResult)
         }
         
